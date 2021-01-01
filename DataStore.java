@@ -33,15 +33,16 @@ class DataStore{
 		return (key.length()<=32)?true:false;
 	}
 	protected synchronized void create() {
-		System.out.print("Enter Key : \n");
+		System.out.println("Enter Key :");
 		String key=sc.next();
-		System.out.print("Enter Value : \n");
+		System.out.println("Enter Value :");
 		String val=sc.next();
 		JSONObject obj=new JSONObject();
 		obj.put("name",val);
-		System.out.print("Do you want to set TimeLimit to key");
+		System.out.println("Do you want to set TimeLimit to key");
 		int time=0;
 		if(sc.next().equals("yes")) {
+			System.out.println("Enter KeyLimit :");
 			time = sc.nextInt();
 		}
 		limit=time==0?0:(System.currentTimeMillis()+(time*1000));
@@ -57,7 +58,7 @@ class DataStore{
 	}
 	protected synchronized void create(String key, JSONObject value,long limit) {
 		try {
-			if(isKeyValid(key) && !keysData.containsKey(key)) {// && isValueValid(value)) {
+			if(isKeyValid(key) && !keysData.containsKey(key) && isValueValid(value)) {
 			    keytime.put(key,limit);
 				keysData.put(key,(long)1);
 			    write(key,value);
