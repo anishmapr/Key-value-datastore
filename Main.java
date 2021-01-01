@@ -28,8 +28,8 @@ public class Main extends Data{
     }
 	public static void main(String[] args) throws Exception {
 		f=new File("database.db");
-		f.createNewFile();
 		f.delete();
+		f.createNewFile();
 		int val=1;
 		do{
 		userOption();
